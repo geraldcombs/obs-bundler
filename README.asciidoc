@@ -12,6 +12,7 @@ ZIP archives of a set of RPM packages and their dependencies. The Bundler also
 ensures that each bundle is usable by Visual C++.
 
 Why OBS?
+
 - OBS creates both 32 and 64 bit packages:
   https://build.opensuse.org/project/show/windows:mingw:win32
   https://build.opensuse.org/project/show/windows:mingw:win64
@@ -19,6 +20,7 @@ Why OBS?
 - Quality is good.
 
 Why not OBS?
+
 - Packages are linked against MSVCRT.DLL.
 - Packages are compiled on Linux and thrown over a wall.
 - Packages are linked against MSVCRT.DLL.
@@ -67,6 +69,7 @@ More Information
 ================
 
 Other candidates and build systems:
+
 - Win-builds http://win-builds.org/doku.php
 - Fedora http://fedoraproject.org/wiki/MinGW
 - Debian?
