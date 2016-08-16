@@ -45,8 +45,13 @@ Foreach-Object {
     # foo.def and foo.lib
     $dll = $_
     $dll_base = $dll.Basename
+    # We make the following transformations. Whether or not the LHS or RHS
+    # are a good idea are left as an exercise for the reader.
+    # libGeoIP-1.dll -> GeoIP.lib
+    # libgcrypt-20.dll -> gcrypt.lib
+    # libglib-2.0-0.dll -> libglib-2.0.lib
     $lib_base = $dll_base -replace '^lib', ''
-    $lib_base = $lib_base -replace '-[0-9]+', ''
+    $lib_base = $lib_base -replace '-[0-9]+$', ''
 
     # This wouldn't be needed if GNU ld used sane defaults:
     # https://sourceware.org/bugzilla/show_bug.cgi?id=19011

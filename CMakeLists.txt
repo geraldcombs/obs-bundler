@@ -221,4 +221,5 @@ add_bundle_targets(libpcre1 pcre-devel)
 # - PortAudio (GTK+ only)
 # - AirPcap and WinPcap/NPcap developer packs
 # - Libsmi
+# - libssh
 # - WinSparkle
