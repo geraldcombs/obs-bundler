@@ -194,7 +194,7 @@ macro(add_bundle_targets _base_package)
             COMMAND ${CMAKE_COMMAND} -E remove -f "${_bundle_name}"
             COMMAND ${CMAKE_COMMAND} -E remove_directory "${_bundle_base}"
             COMMAND ${CMAKE_COMMAND} -E rename "${_prep_base}" "${_bundle_base}"
-            COMMAND ${ZIP_EXECUTABLE} a -tzip -mx=9 "${_win_bundle_name}.zip" "${_bundle_base}\\"
+            COMMAND ${ZIP_EXECUTABLE} a -tzip -mx=9 "${_win_bundle_name}" "${_bundle_base}\\"
             WORKING_DIRECTORY "${CMAKE_BINARY_DIR}/work/${MACHINE}"
         )
 
