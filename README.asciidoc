@@ -7,7 +7,7 @@ The OpenSUSE Build System (OBS) cross-compiles a variety of applications and
 libraries for Windows x86 and x64. Unfortunately the packages are delivered
 as RPMs, which is not very useful on Windows.
 
-The OBS Bundler uses CMake and a set of PowerShell scripts to create "bundles",
+The OBS Bundler uses CMake and a set of PowerShell scripts to create ``bundles'',
 ZIP archives of a set of RPM packages and their dependencies. The Bundler also
 ensures that each bundle is usable by Visual C++.
 
@@ -46,8 +46,10 @@ Bundling packages requires the following:
 Usage
 =====
 
-1. Create a build directory, e.g. "build" and cd into it.
-2. Run `cmake ..`. This will do the following:
+1. Open a Visual Studio command prompt.
+2. Create a build directory, e.g. "build" and cd into it.
+3. Run `cmake -G "Visual Studio 12 Win64" ..`, substituting a generator that
+   matches your version of Visual Studio. This will do the following:
   - Locate 7-Zip and Python
   - Download gendef.exe and download-mingw-rpm
   - Create work and packaging directories.
@@ -58,6 +60,8 @@ Usage
   - Create import libraries.
   - Create bundle ZIPs in the `bundles` directory.
 
+The script `run-cmake.cmd` will execute steps 2 and 3 for Visual Studio
+2013 x64. Note that it removes the `build` directory.
 
 To do
 =====
