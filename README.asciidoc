@@ -1,0 +1,77 @@
+OBS Bundler
+-----------
+
+Create ZIP bundles from OpenSUSE Build System packages.
+
+The OpenSUSE Build System (OBS) cross-compiles a variety of applications and
+libraries for Windows x86 and x64. Unfortunately the packages are delivered
+as RPMs, which is not very useful on Windows.
+
+The OBS Bundler uses CMake and a set of PowerShell scripts to create "bundles",
+ZIP archives of a set of RPM packages and their dependencies. The Bundler also
+ensures that each bundle is usable by Visual C++.
+
+Why OBS?
+- OBS creates both 32 and 64 bit packages:
+  https://build.opensuse.org/project/show/windows:mingw:win32
+  https://build.opensuse.org/project/show/windows:mingw:win64
+- Packages are mostly up to date
+- Quality is good.
+
+Why not OBS?
+- Packages are linked against MSVCRT.DLL.
+- Packages are compiled on Linux and thrown over a wall.
+- Packages are linked against MSVCRT.DLL.
+- No stable branch?
+- Packages are linked against MSVCRT.DLL.
+- Other options (see below) might work better.
+- Packages are linked against MSVCRT.DLL.
+
+
+Prerequisites
+=============
+
+Bundling packages requires the following:
+
+- CMake.
+- PowerShell version 2 or later.
+- 7-Zip, for archive extraction and creation. Note that 7za will not work.
+- Python 3, for running download-mingw-rpm. Note the "3".
+- Visual C++, to set hardening flags (editbin) and create import libraries
+  (lib).
+
+
+Usage
+=====
+
+1. Create a build directory, e.g. "build" and cd into it.
+2. Run `cmake ..`. This will do the following:
+  - Locate 7-Zip and Python
+  - Download gendef.exe and download-mingw-rpm
+  - Create work and packaging directories.
+  - Download a set of RPMs using download-mingw-rpm and extract
+    their contents to <build>\work\x86 and \x64.
+3. Run `msbuild OBS-Bundler.sln`. This will do the following:
+  - Set hardening flags on  DLLs. This is safe, at least in theory.
+  - Create import libraries.
+  - Create bundle ZIPs in the `bundles` directory.
+
+
+To do
+=====
+
+See if we can convert OBS packages to NuGet.
+
+
+More Information
+================
+
+Other candidates and build systems:
+- Win-builds http://win-builds.org/doku.php
+- Fedora http://fedoraproject.org/wiki/MinGW
+- Debian?
+- MXE http://mxe.cc/
+- Npackd https://npackd.appspot.com/
+- Windows Packager http://windowspackager.org/
+
+http://stackoverflow.com/questions/36069480/how-to-automate-generating-an-import-library-from-undecorated-stdcall-dll
