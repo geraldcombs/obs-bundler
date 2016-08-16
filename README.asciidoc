@@ -66,6 +66,7 @@ The script `run-cmake.cmd` will execute steps 2 and 3 for Visual Studio
 To do
 =====
 
+See if we can get OBS to create import libraries.
 See if we can convert OBS packages to NuGet.
 
 

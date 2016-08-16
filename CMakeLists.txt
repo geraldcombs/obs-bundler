@@ -207,7 +207,8 @@ add_bundle_targets(libcares2 libcares2-devel)
 
 add_bundle_targets(geoip geoip-devel)
 
-add_bundle_targets(gnutls libgnutls-devel)
+# XXX Make gcrypt a separate bundle?
+add_bundle_targets(gnutls libgnutls-devel libgcrypt20 libgcrypt-devel)
 
 # Includes custom target gtk2-prep.ps1
 add_bundle_targets(gtk2 gtk2-devel libgthread-2_0-0 glib2-debug)
